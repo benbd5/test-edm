@@ -13,6 +13,11 @@ class MovieFactory
     {
         $this->entityManager = $entityManager;
     }
+
+    /**
+     * @param array $xmlParsed
+     * @return Movie
+     */
     public function createMovie(array $xmlParsed): Movie
     {
         $movie = new Movie();

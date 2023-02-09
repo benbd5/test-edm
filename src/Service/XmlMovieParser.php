@@ -4,6 +4,10 @@ namespace App\Service;
 
 class XmlMovieParser
 {
+    /**
+     * @param string $filePath
+     * @return array
+     */
     public function importFile(string $filePath): array
     {
         $movies = [];
