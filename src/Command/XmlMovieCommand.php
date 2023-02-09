@@ -39,8 +39,13 @@ class XmlMovieCommand extends Command
         $movies = $this->xmlMovieParser->importFile($filePath);
 
         foreach ($movies as $movie) {
-            $this->movieFactory->createMovie($movie);
-            $progressBar->advance();
+            try {
+                $this->movieFactory->createMovie($movie);
+                $progressBar->advance();
+            } catch (\Exception $e) {
+                $output->writeln("Le film {$movie['title']} n'a pas pu être importé");
+                return Command::FAILURE;
+            }
         }
 
         $progressBar->finish();
